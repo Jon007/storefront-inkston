@@ -1,0 +1,242 @@
+/*this should be a bug in Storefront and needs applying at each screen size to get menu icons and text to align*/
+.main-navigation ul li, .secondary-navigation ul li{vertical-align: middle;}
+
+/*move some padding to container margin so box underlining is less far from menu text*/
+.main-navigation ul.menu>li>a, .main-navigation ul.nav-menu>li>a, 
+.storefront-primary-navigation .cart-contents{
+    padding-top: 8px!important;
+    padding-bottom: 8px!important;
+}
+.main-navigation ul.menu>li, .main-navigation ul.nav-menu>li {
+    margin-bottom: 0.5em!important;
+}
+
+/*reduced padding on lang items*/
+.nav-menu li.lang-item, .nav-menu li.lang-item a {
+text-align:center;padding-right:1px!important;padding-left:1px!important;
+}
+/*indicate current menu*/
+.nav-menu li.current-lang, .nav-menu li.current-menu-item, .nav-menu li.current_page_parent
+, .nav-menu li.current-post-ancestor{
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    padding-bottom: 0px!important;
+    margin-top:1px;
+    /* border-bottom-color: ;  follow theme setting */
+}
+
+
+/* allow footer elements to line up */
+.site-info{padding-right: 5px;padding-left: 5px;}
+.site-info .secondary-navigation{margin-bottom: 0px;}
+.site-info .secondary-navigation, .site-info .col, .footer-subscribe, 
+.wishlist_products_counter, .wishlist_products_counter a{display:inline-block!important;vertical-align:middle!important;}
+.site-footer{padding-bottom:0px;}
+.col.social{float:right;}
+
+/* clear .psgal sizing from figures which are woocommerce main product image */
+.psgal figure.woocommerce-product-gallery__wrapper,
+.psgal figure.woocommerce-product-gallery__wrapper .flex-active-slide img{
+    height:416px; width:416px;
+}
+
+/* better text decoration on hover*/
+a:hover,a:active {
+    outline: thin dotted;
+}
+/* storefront header cart, if used
+   alter position of cart icon etc*/
+.site-header-cart .cart-contents::after{
+    float:left!important;
+}
+.cart-contents .count{
+    position: relative;
+    top: -11px;
+    left: -13px;
+    font-weight: bold!important;
+    opacity: 1!important;
+}
+
+
+/* inkston header cart, if used instead of storefront cart */
+
+ul.header-cart {list-style:none;margin:0;display:inline-block;}
+
+.header-cart li a {border-radius: 5px;}
+.header-cart li a {
+    text-decoration: none;
+    padding: 10px;
+    font-size: 12px;
+    /*
+    color: #fff;
+    background-color: #39aa39;
+    */
+    vertical-align: middle;
+}
+
+/*floating total items in cart*/
+span.cart-total {position:relative;left:-9px;top:-7px;font-size:10px;}
+.header-cart li a:before {
+    /* storefront cart symbol */
+    font-family: 'Font Awesome 5 Free';
+    content: "\f291";
+    /* inkston cart symbol - good but don't really want another symbol font just for cart..
+    font: normal 16px/1 'Genericons';
+    content: '\f447';  
+    */
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    vertical-align:bottom;
+    padding-bottom: 0px;
+    margin-bottom: -4px;
+}
+/*override top menu color 
+.top-menu .header-cart span {color:#fff;}
+*/
+
+/* make top menu cart thinner */ 
+.top-menu .header-cart a {padding-top:4px;padding-bottom:4px}
+
+
+/* popup cart details - make visible */
+/*
+div.woocommerce widget_shopping_cart{
+    opacity: 0.9;
+    background-color: white;
+}
+*/
+
+/* friendly rounded buttons */
+.added_to_cart, .button, button, input[type=button], input[type=reset], input[type=submit] {
+    border-radius:5px;
+}
+
+
+
+/* inkston tiles... square tile class: default large size to min 200px 
+ and 6 per row (16%), overridden for smaller screen sizes*/
+.tile{
+ color:#FFF; 
+ position:relative;
+ float:left;
+ width:250px;
+ height:250px;
+ max-width:250px;
+ max-height:250px;
+ min-width:250px;
+ min-height:250px;
+ overflow:hidden;
+ margin:0;
+ background-size:cover;
+}
+/* tile spacing essential to create square*/
+.tile:after {
+ content:"";
+ display:block;
+ padding-bottom:100%;
+}
+/*tile text link 
+- starts slightly up so it can animate in
+- fixed to 16px since picture grows as screen shrinks
+- turned off visibility:hidden so link is always available and can accept focus
+*/
+.tile a {
+ position:absolute;
+ width:100%;
+ height:100%;
+ overflow:hidden;
+ font-size:16px;
+ text-align:center;
+ color:rgba(26, 25, 25, 0.1)!important;
+ line-height:1.5em;
+ top:-40px;
+ background-color:transparent;
+}
+.tile a:after {
+ content: " (more..)";
+}
+.tile a h3{margin-bottom:12px;}
+/* enable effect on touch, tab-stop and hover */
+.tile:active a, .tile a:focus, .tile:hover a {
+position:absolute;
+top:10px;
+left:0;
+color: #FFF!important;
+background-color:rgba(26, 25, 25, 0.4);
+visibility:visible;
+transition: 0.3s ease-out;
+-webkit-transition: top 0.3s, visibility 0.3s, background-color 0.3s ;
+}
+.tile a, .tile a * {text-decoration:none!important;}
+.tile:active h3, .tile a:focus h3, .tile:hover h3{color: #FFF;}
+
+/*define search-highlight for search results*/
+span.search-highlight{font-weight:bold;background-color:rgba(104,153,195,0.5);}
+.tile span.search-highlight{background-color:inherit;}
+.tile:active a span.search-highlight, .tile:hover a span.search-highlight, 
+.tile a:focus span.search-highlight{background-color: yellow;color: rgb(57,115,170);}
+
+
+/*
+ * WooComerce Currency Switcher
+ */
+.tile a .woocs_price_code * {background:transparent;color:rgba(26, 25, 25, 0.1)!important}
+.tile:focus a .woocs_price_code *, 
+.tile:active a .woocs_price_code *, 
+.tile:hover a .woocs_price_code * {
+ color: #FFF!important;
+ background:transparent;
+ visibility:visible;	
+}
+.tile a{
+float: left;
+position: relative;
+}
+/* strike out original price where there is a sale price */
+.tile a del{text-decoration:line-through!important;}
+/*
+.woocommerce .tile .star-rating{
+	display:inline-block;
+}
+*/
+.tile a {max-height: 200px;}
+.fixbox .tile a {max-height: 150px;}
+.woocommerce .tile span.onsale{top:0;right:0;float:right;left:inherit;}
+
+
+/* when an article in tile view has no images */
+.tile.noimage{
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);	
+}
+.tile.noimage a{
+background-color: rgba(255,255,255,0.9)!important;
+color: rgba(0,0,0,0.7)!important;
+top:-8px;
+}
+.tile.noimage:hover a{
+position:absolute;
+top:10px;
+left:0;
+color:white!important;
+background-color: rgba(26, 25, 25, 0.9)!important;
+}
+.tile .noimage span.search-highlight{
+font-weight: bolder;
+background-color: rgba(104,153,195,0.5);
+}
+
+/*top star rating destroying box size*/
+.tile .star-rating{float:left;}
+.tile .onsale{float:right;margin-bottom:0;}
+
+/*for full width short description*/
+.woocommerce-product-details__short-description{clear:both}
+
+/* saleflash colors.. ideally would be a theme customizer option*/
+.subscribe .button{
+    background-color: #fa7c0b;
+    color: white;
+    padding: 4px 8px;
+}
+/* sale class to easily mark flash messages in sale highlight colour*/
+.saleflash{color:#fa7c0b;background-color:white;font-weight:bold;text-align: center;}
