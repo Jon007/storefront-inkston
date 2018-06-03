@@ -159,7 +159,8 @@
 			</div>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
-</div><!-- .out-wrap -->
+	<?php do_action( 'storefront_after_footer' ); ?>
+</div><!-- #page -->
 <?php wp_footer(); ?>
 </body>
 </html>
