@@ -22,8 +22,11 @@ function inkston_setup() {
 	add_post_type_support( 'forum', array( 'thumbnail' ) );
 	add_post_type_support( 'topic', array( 'thumbnail' ) );
 
-
-	set_post_thumbnail_size( 300, 300, true );
+	//this is done for the tiles, but StoreFront hates it actually...
+	//so we could get inkston to use a different size for the tiles instead
+	//(actually it already does, it uses medium)
+	//set_post_thumbnail_size( 300, 300, true );
+	set_post_thumbnail_size( 1500, 240, false ); //or as appropriate for storefront
 
 	/**
 	 * This theme uses wp_nav_menu() in one location.
@@ -74,84 +77,8 @@ add_action( 'wp_enqueue_scripts', 'inkston_scripts', 1000 );
 
 
 /*
- * standard storefront brighten is absurd, just fades out text that needs to stand out,
- * so adjust it here?
+ * use inkston_cart_link if it exists, if not fallback to custom version of storefront
  */
-function inkston_brighten_factor() {
-	return -25;
-}
-
-function inkston_darken_factor() {
-	return -25;
-}
-
-//$brighten_factor       = apply_filters( 'storefront_brighten_factor', 25 );
-//$darken_factor         = apply_filters( 'storefront_darken_factor', -25 );
-//add_filter( 'storefront_brighten_factor', 'inkston_brighten_factor' );
-//add_filter( 'storefront_darken_factor', 'inkston_darken_factor' );
-
-
-
-
-/* override storefront disaster hover styles */
-function inkston_customizer_css( $styles ) {
-	$storefront_customizer	 = new Storefront_Customizer();
-	$storefront_theme_mods	 = $storefront_customizer->get_storefront_theme_mods();
-	$override_styles		 = '
-	.main-navigation ul li a:hover,
-	.main-navigation ul li:hover > a,
-	.site-title a:hover,
-	a.cart-contents:hover,
-	.site-header-cart:hover > li > a,
-	.site-header ul.menu li.current-menu-item > a {
-	color: ' . storefront_adjust_color_brightness( $storefront_theme_mods[ 'header_link_color' ], inkston_darken_factor() ) . ';
-	background-color: ' . storefront_adjust_color_brightness( $storefront_theme_mods[ 'background_color' ], inkston_darken_factor() ) . ';}
-	a:hover{color: ' . storefront_adjust_color_brightness( $storefront_theme_mods[ 'header_link_color' ], inkston_darken_factor() ) . ';
-}
-	.menu-item a:hover, .wishlist_products_counter a:hover{color:' . $storefront_theme_mods[ 'accent_color' ] . ';}
-	.tooltip .tooltiptext {background-color:' . storefront_adjust_color_brightness( $storefront_theme_mods[ 'background_color' ], inkston_darken_factor() ) . ';}
-	.widget_shopping_cart{opacity: 0.7;background-color: ' . storefront_adjust_color_brightness( $storefront_theme_mods[ 'background_color' ], inkston_darken_factor() ) . ';}
-.site-header-cart .widget_shopping_cart, .site-header-cart .widget_shopping_cart a {color:' . storefront_adjust_color_brightness( $storefront_theme_mods[ 'text_color' ], inkston_darken_factor() ) . '!important;}
-.site-header-cart .widget_shopping_cart a:hover {color:' . storefront_adjust_color_brightness( $storefront_theme_mods[ 'text_color' ], inkston_darken_factor() * 2 ) . '!important;}
-	';
-
-	return str_replace( '  ', ' ', $styles . $override_styles );
-}
-
-add_filter( 'storefront_customizer_css', 'inkston_customizer_css', 10, 1 );
-
-
-/*
- * add inkston extra customizer settings
- * TODO: THIS DOES NOT WORK - WHY??
- */
-function ink_customize_register( $wp_customize ) {
-	$wp_customize->add_setting( 'storefront_action_color', array(
-		'default'			 => apply_filters( 'storefront_action_color', '#43454b' ),
-		'sanitize_callback'	 => 'sanitize_hex_color',
-	) );
-	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'storefront_action_color', array(
-		'label'				 => __( 'Call to action color', 'storefront' ),
-		'section'			 => 'storefront_typography',
-		'settings'			 => 'storefront_action_color',
-		'priority'			 => 60,
-		'sanitize_callback'	 => 'sanitize_hex_color',
-	) ) );
-}
-
-add_action( 'customize_register', 'ink_customize_register', 90, 1 );
-/**
- * add inkston to the Storefront theme mods.
- *
- * @param array $storefront_theme_mods The Storefront Theme Mods.
- * @return array $storefront_theme_mods The Storefront Theme Mods.
- */
-function inkston_theme_mods( $storefront_theme_mods ) {
-	$storefront_theme_mods[ 'storefront_action_color' ] = get_theme_mod( 'storefront_action_color' );
-	return $storefront_theme_mods;
-}
-
-add_filter( 'storefront_theme_mods', 'inkston_theme_mods', 10, 1 );
 function storefront_cart_link() {
 	if ( function_exists( 'inkston_cart_link' ) ) {
 		inkston_cart_link();
@@ -167,6 +94,12 @@ function storefront_cart_link() {
 function remove_header_background_image( $styles ) {
 	if ( isset( $styles[ 'background-image' ] ) ) {
 		unset( $styles[ 'background-image' ] );
+		$featured_image = get_the_post_thumbnail_url( get_the_ID(), 'full' );
+		if ( $featured_image ) {
+			$background_image				 = 'url(' . esc_url( $featured_image ) . ')';
+			$styles[ 'background-image' ]	 = $background_image;
+			//error_log( $styles[ 'background-image' ] );
+		}
 	}
 	return $styles;
 }
@@ -183,3 +116,5 @@ function storefront_page_header() {
 	</header><!-- .entry-header -->
 	<?php
 }
+
+include_once( 'inkston-customizer.php' );

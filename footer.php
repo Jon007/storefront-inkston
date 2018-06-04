@@ -131,7 +131,7 @@
 
 			<div class="col subscribe">
 				<div class="footer-subscribe">
-					<a class="button" href="<?php echo($url_manage_subscription); ?>"><i class="fa fa-newspaper-o" aria-hidden="true"></i> subscribe</a></div>
+					<a class="button saleflash inverse" href="<?php echo($url_manage_subscription); ?>"><i class="fa fa-newspaper-o" aria-hidden="true"></i> subscribe</a></div>
 			</div>
 			<div class="col social">
 				<span class="wishlist_products_counter" title="<?php _e( 'View saved wishlist items', 'storefront-inkston' )
