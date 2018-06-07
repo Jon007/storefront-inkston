@@ -27,28 +27,8 @@ function inkston_setup() {
 	//(actually it already does, it uses medium)
 	//set_post_thumbnail_size( 300, 300, true );
 	set_post_thumbnail_size( 1500, 240, false ); //or as appropriate for storefront
-
-	/**
-	 * This theme uses wp_nav_menu() in one location.
-	 */
-	register_nav_menus( array(
-		//'top'		 => __( 'Top Menu', 'storefront-inkston' ),
-		//'hamburger'	 => __( 'Hamburger Menu', 'storefront-inkston' ),
-		//'primary'	 => __( 'Primary Menu', 'storefront-inkston' ),
-		'social' => __( 'Social Menu', 'storefront-inkston' ),
-		'footer' => __( 'Footer Menu', 'storefront-inkston' ),
-	) );
-	/* this code handles non-Polylang subsite allowing different language menus */
-	if ( ! function_exists( 'pll_the_languages' ) ) {
-		register_nav_menus( array(
-			//'topfr_FR'		 => __( 'Top Menu', 'storefront-inkston' ) . ' Français',
-			//'topes_ES'		 => __( 'Top Menu', 'storefront-inkston' ) . ' Español',
-			//'topde_DE'		 => __( 'Top Menu', 'storefront-inkston' ) . ' Deutsche',
-			'footerfr_FR'	 => __( 'Footer Menu', 'storefront-inkston' ) . ' Français',
-			'footeres_ES'	 => __( 'Footer Menu', 'storefront-inkston' ) . ' Español',
-			'footerde_DE'	 => __( 'Footer Menu', 'storefront-inkston' ) . ' Deutsche',
-		) );
-	}
+	//currently storefront only does this if woocommerce is activated, we want search in all cases
+	add_action( 'storefront_header', 'storefront_product_search', 40 );
 }
 
 add_action( 'after_setup_theme', 'inkston_setup' );
@@ -117,4 +97,21 @@ function storefront_page_header() {
 	<?php
 }
 
+/**
+ * Display Product Search
+ *
+ * @since  1.0.0
+ * @uses  storefront_is_woocommerce_activated() check if WooCommerce is activated
+ * @return void
+ */
+function storefront_product_search() {
+	?><div class="site-search">
+	<?php
+		//the_widget( 'WC_Widget_Product_Search', 'title=' );
+		get_search_form();
+		?>
+	</div><?php
+}
+
 include_once( 'inkston-customizer.php' );
+include_once( 'inkston-menus.php' );

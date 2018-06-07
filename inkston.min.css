@@ -1,8 +1,8 @@
 .main-navigation ul li,.secondary-navigation ul li{vertical-align:middle}
-#site-navigation ul.menu>li>a,.main-navigation ul.menu>li>a,.main-navigation ul.nav-menu>li>a,.storefront-primary-navigation .cart-contents{padding-top:8px!important;padding-bottom:8px!important}
+#site-navigation ul.menu>li>a,.secondary-navigation ul.menu>li>a,.secondary-navigation ul.nav-menu>li>a,.main-navigation ul.menu>li>a,.main-navigation ul.nav-menu>li>a,.storefront-primary-navigation .cart-contents{padding-top:8px!important;padding-bottom:8px!important}
 .main-navigation ul.menu>li,.main-navigation ul.nav-menu>li{margin-bottom:.5em!important}
 .menu li.lang-item,.menu li.lang-item a{text-align:center;padding-right:1px!important;padding-left:1px!important}
-.primary-navigation li.current-lang,.primary-navigation li.current-menu-item,.primary-navigation li.current_page_parent,.primary-navigation li.current-post-ancestor{border-bottom-style:solid;border-bottom-width:1px;padding-bottom:0!important;margin-top:1px}
+body.single-ai1ec_event .menu .events,body.business-directory .menu .menu-item.directory,body.topic .menu .menu-item-object-forum,body.bbp-user-page .menu .menu-item.account,body.forum .menu .menu-item-object-forum,.menu li.current-lang,.menu li.current-menu-item,.menu li.current_page_parent,.menu li.current-post-ancestor{border-bottom-style:solid;border-bottom-width:1px;padding-bottom:0!important;margin-top:1px}
 .storefront-breadcrumb{margin-bottom:0}
 .woocommerce-products-header{padding-bottom:0!important}
 .site-info{padding-right:5px;padding-left:5px}
@@ -50,3 +50,10 @@ span.search-highlight{font-weight:700;background-color:rgba(104,153,195,0.5)}
 div[data-featured-image] .col-full{font-weight:600;opacity:.5;border-radius:25px}
 div[data-featured-image] .col-full h1{font-weight:600}
 div[data-featured-image] .entry-header{max-width:80em}
+body.psgal .button{border-radius:5px}
+.site-header .site-search{display:none}
+@media (min-width: 768px) {
+.storefront-secondary-navigation .site-header .site-branding{width:21.7391304348%}
+.storefront-secondary-navigation .site-header .secondary-navigation{width:47.8260869565%;float:left;margin-right:4.347826087%}
+.site-header .site-search{display:block;width:21.7391304348%;float:right;margin-right:0;clear:none;font-size:.875em}
+}

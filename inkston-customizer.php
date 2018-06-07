@@ -49,10 +49,15 @@ function inkston_customizer_css( $styles ) {
 .site-header-cart .widget_shopping_cart, .site-header-cart .widget_shopping_cart a {color:' . storefront_adjust_color_brightness( $storefront_theme_mods[ 'text_color' ], inkston_darken_factor() ) . '!important;}
 .site-header-cart .widget_shopping_cart a:hover {color:' . storefront_adjust_color_brightness( $storefront_theme_mods[ 'text_color' ], inkston_darken_factor() * 2 ) . '!important;}
 div[data-featured-image] .col-full{background-color:' . $storefront_theme_mods[ 'background_color' ] . ';}
-.saleflash{color:' . $storefront_theme_mods[ 'storefront_action_color' ] . ';background-color:' . $storefront_theme_mods[ 'background_color' ] . ';font-weight:bold;text-align: center;}
-.saleflash.inverse{background-color:' . $storefront_theme_mods[ 'storefront_action_color' ] . ';color:' . $storefront_theme_mods[ 'background_color' ] . ';}
-a.saleflash:hover, a.saleflash:active{color:' . storefront_adjust_color_brightness( $storefront_theme_mods[ 'storefront_action_color' ], inkston_darken_factor() ) . ';}
-a.saleflash.inverse:hover, a.saleflash.inverse:active{background-color:' . storefront_adjust_color_brightness( $storefront_theme_mods[ 'storefront_action_color' ], inkston_darken_factor() ) . ';}
+.saleflash{color:' . $storefront_theme_mods[ 'storefront_action_color' ] . '!important;background-color:' . $storefront_theme_mods[ 'background_color' ] . '!important;font-weight:bold;text-align: center;}
+.saleflash.inverse{background-color:' . $storefront_theme_mods[ 'storefront_action_color' ] . '!important;color:' . $storefront_theme_mods[ 'background_color' ] . '!important;}
+a.saleflash:hover, a.saleflash:active{color:' . storefront_adjust_color_brightness( $storefront_theme_mods[ 'storefront_action_color' ], inkston_darken_factor() ) . '!important;}
+a.saleflash.inverse:hover, a.saleflash.inverse:active{background-color:' . storefront_adjust_color_brightness( $storefront_theme_mods[ 'storefront_action_color' ], inkston_darken_factor() ) . '!important;color:' . $storefront_theme_mods[ 'background_color' ] . '!important;}
+#content .button{background-color:' . $storefront_theme_mods[ 'button_alt_background_color' ] . ';color:' . $storefront_theme_mods[ 'button_alt_text_color' ] . ';}
+#content :hover.button,
+#content :active.button,
+#content :focus.button{background-color:' . storefront_adjust_color_brightness( $storefront_theme_mods[ 'button_alt_background_color' ], inkston_darken_factor() ) . ';}
+
 	';
 
 	return str_replace( '	', '', str_replace( '  ', ' ', $styles . $override_styles ) );
