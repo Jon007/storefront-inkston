@@ -56,4 +56,13 @@ body.psgal .button{border-radius:5px}
 .storefront-secondary-navigation .site-header .site-branding{width:21.7391304348%}
 .storefront-secondary-navigation .site-header .secondary-navigation{width:47.8260869565%;float:left;margin-right:4.347826087%}
 .site-header .site-search{display:block;width:21.7391304348%;float:right;margin-right:0;clear:none;font-size:.875em}
+}@media (max-width: 768px){
+.footer-menu ul {
+list-style: none;
+margin:0;
+font-size: .875em;
+}
+.footer-menu ul li {
+display:inline-block;
+}
 }
