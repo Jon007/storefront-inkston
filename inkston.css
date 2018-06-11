@@ -290,3 +290,27 @@ font-size: .875em;
     display:inline-block;
 }
 }
+
+
+/* switch handheld lang items to flexbox to */
+#site-navigation .handheld-navigation ul.menu>li.lang-item>a{
+    display:flex;
+}
+
+/* style images with text on handheld navigation */
+.handheld-navigation .lang-item img {
+    width: 44px;
+    margin-right: 5px;
+}
+
+/*indicate current menu for handheld navigation*/
+body.single-ai1ec_event .handheld-navigation .menu .events,
+body.business-directory .handheld-navigation .menu .menu-item.directory, 
+body.topic .handheld-navigation .menu .menu-item-object-forum,
+body.bbp-user-page .handheld-navigation .menu .menu-item.account,
+body.forum .handheld-navigation .menu .menu-item-object-forum,
+.handheld-navigation .menu li.current-lang, .handheld-navigation .menu li.current-menu-item, 
+.handheld-navigation .menu li.current_page_parent, .handheld-navigation .menu li.current-post-ancestor{
+    border-style: solid;
+    border-width: 1px;
+}

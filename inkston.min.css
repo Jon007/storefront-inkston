@@ -65,4 +65,20 @@ font-size: .875em;
 .footer-menu ul li {
 display:inline-block;
 }
+}#site-navigation .handheld-navigation ul.menu>li.lang-item>a{
+display:flex;
+}
+.handheld-navigation .lang-item img {
+width: 44px;
+margin-right: 5px;
+}
+body.single-ai1ec_event .handheld-navigation .menu .events,
+body.business-directory .handheld-navigation .menu .menu-item.directory, 
+body.topic .handheld-navigation .menu .menu-item-object-forum,
+body.bbp-user-page .handheld-navigation .menu .menu-item.account,
+body.forum .handheld-navigation .menu .menu-item-object-forum,
+.handheld-navigation .menu li.current-lang, .handheld-navigation .menu li.current-menu-item, 
+.handheld-navigation .menu li.current_page_parent, .handheld-navigation .menu li.current-post-ancestor{
+border-style: solid;
+border-width: 1px;
 }
