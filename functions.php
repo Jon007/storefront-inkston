@@ -125,7 +125,16 @@ function thumbnail_lightbox( $html, $postID, $post_thumbnail_id, $size, $attr ) 
 	return $html;
 }
 
+//sadly general filter of thumbnail_lightbox didn't work as filtered too many images...
+//.. so instead rewrite the storefront function and do it specifically there
+function storefront_post_thumbnail( $size = 'full' ) {
+	if ( has_post_thumbnail() ) {
 add_filter( 'post_thumbnail_html', 'thumbnail_lightbox', 10, 5 );
+		the_post_thumbnail( $size );
+		remove_filter( 'post_thumbnail_html', 'thumbnail_lightbox', 10 );
+	}
+}
+
 /**
  * Display Product Search
  *
@@ -140,6 +149,50 @@ function storefront_product_search() {
 		get_search_form();
 		?>
 	</div><?php
+}
+
+/*
+ * add a recent posts section to the homepage, before the woocommerce sections
+ */
+function inkston_recent_posts() {
+	echo '<section class="storefront-product-section inkston-recent-stories" aria-label="' . esc_attr__( 'Recent Stories', 'storefront-inkston' ) . '">';
+
+	echo '<h2 class="section-title">' . __( 'Recent Stories', 'storefront-inkston' ) . '</h2>';
+
+
+	output_recent_post_tiles();
+	$stories_category_id = (function_exists( 'pll_get_term' )) ? pll_get_term( 212 ) : 212;
+	echo '<p style="clear:both"><a href="' . get_category_link( $stories_category_id ) . '">';
+	_e( 'Read more', 'storefront-inkston' );
+	echo '</a></p>';
+	echo '</section>';
+}
+
+add_action( 'homepage', 'inkston_recent_posts', 15 );
+function output_recent_post_tiles() {
+	$query_args	 = array(
+		'ignore_sticky_posts'	 => true, //sticky posts automatically added by WP
+		'post_type'				 => array( 'post' ),
+		'orderby'				 => 'modified',
+		'posts_per_page'		 => 4,
+		'showposts'				 => 4,
+		'order'					 => 'DESC',
+		'fields'				 => 'ids',
+		'tax_query'				 => [
+			[
+				'taxonomy'	 => 'category',
+				'field'		 => 'slug',
+				'terms'		 => 'stories'
+			],
+		]
+	);
+	$recent_list = get_posts( $query_args );
+	foreach ( $recent_list as $post_id ) {
+		global $post;
+		$post = get_post( $post_id );
+		setup_postdata( $post );
+		tile_thumb();
+	}
 }
 
 include_once( 'inkston-customizer.php' );
