@@ -29,6 +29,11 @@ function inkston_setup() {
 	set_post_thumbnail_size( 1500, 240, false ); //or as appropriate for storefront
 	//currently storefront only does this if woocommerce is activated, we want search in all cases
 	add_action( 'storefront_header', 'storefront_product_search', 40 );
+
+	//move post meta to after post, it's not important in this theme
+	remove_action( 'storefront_loop_post', 'storefront_post_meta', 20 );
+	remove_action( 'storefront_single_post', 'storefront_post_meta', 20 );
+	add_action( 'storefront_single_post', 'storefront_post_meta', 40 );
 }
 
 add_action( 'after_setup_theme', 'inkston_setup' );
@@ -97,6 +102,30 @@ function storefront_page_header() {
 	<?php
 }
 
+/**
+ * Filters the post thumbnail HTML to wrap in <a> tag to work with photoswipe
+ *
+ * @since 2.9.0
+ *
+ * @param string       $html              The post thumbnail HTML.
+ * @param int          $post_id           The post ID.
+ * @param string       $post_thumbnail_id The post thumbnail ID.
+ * @param string|array $size              The post thumbnail size. Image size or array of width and height
+ *                                        values (in that order). Default 'post-thumbnail'.
+ * @param string       $attr              Query string of attributes.
+ */
+function thumbnail_lightbox( $html, $postID, $post_thumbnail_id, $size, $attr ) {
+	if ( $post_thumbnail_id ) {
+		$image = wp_get_attachment_image_src( $post_thumbnail_id, 'full', false );
+		if ( $image ) {
+			list($src, $width, $height) = $image;
+			$html = '<a class="post-thumbnail" href="' . $src . '" data-size="' . $width . 'x' . $height . '">' . $html . '</a>';
+		}
+	}
+	return $html;
+}
+
+add_filter( 'post_thumbnail_html', 'thumbnail_lightbox', 10, 5 );
 /**
  * Display Product Search
  *

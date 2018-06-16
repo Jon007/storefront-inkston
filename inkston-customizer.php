@@ -42,7 +42,7 @@ function inkston_customizer_css( $styles ) {
 	.site-header ul.menu li.current-menu-item > a {
 	color: ' . storefront_adjust_color_brightness( $storefront_theme_mods[ 'header_link_color' ], inkston_darken_factor() ) . ';
 	background-color: ' . storefront_adjust_color_brightness( $storefront_theme_mods[ 'background_color' ], inkston_darken_factor() ) . ';}
-	a:hover{color: ' . storefront_adjust_color_brightness( $storefront_theme_mods[ 'header_link_color' ], inkston_darken_factor() ) . ';}
+	a:hover{color: ' . storefront_adjust_color_brightness( $storefront_theme_mods[ 'accent_color' ], inkston_darken_factor() ) . ';}
 	.menu-item a:hover, .wishlist_products_counter a:hover{color:' . $storefront_theme_mods[ 'accent_color' ] . ';}
 	.tooltip .tooltiptext {background-color:' . storefront_adjust_color_brightness( $storefront_theme_mods[ 'background_color' ], inkston_darken_factor() ) . ';}
 	.widget_shopping_cart{opacity: 0.7;background-color: ' . storefront_adjust_color_brightness( $storefront_theme_mods[ 'background_color' ], inkston_darken_factor() ) . ';}
@@ -57,7 +57,7 @@ a.saleflash.inverse:hover, a.saleflash.inverse:active{background-color:' . store
 #content :hover.button,
 #content :active.button,
 #content :focus.button{background-color:' . storefront_adjust_color_brightness( $storefront_theme_mods[ 'button_alt_background_color' ], inkston_darken_factor() ) . ';}
-
+.handheld-navigation .dropdown-toggle { color: ' . $storefront_theme_mods[ 'text_color' ] . ';border-color: ' . $storefront_theme_mods[ 'text_color' ] . ';}
 	';
 
 	return str_replace( '	', '', str_replace( '  ', ' ', $styles . $override_styles ) );

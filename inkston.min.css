@@ -24,7 +24,7 @@ span.cart-total{position:relative;left:-9px;top:-7px;font-size:10px}
 .tile:after{content:"";display:block;padding-bottom:100%}
 .tile a{position:absolute;width:100%;height:100%;overflow:hidden;font-size:16px;text-align:center;color:rgba(26,25,25,0.1)!important;line-height:1.5em;top:-40px;background-color:transparent}
 .tile a:after{content:" (more..)"}
-.tile a h3{margin-bottom:12px}
+.tile a h3{margin-bottom:12px;color:rgba(26,25,25,0.1)}
 .tile:active a,.tile a:focus,.tile:hover a{position:absolute;top:10px;left:0;color:#FFF!important;background-color:rgba(26,25,25,0.4);visibility:visible;transition:.3s ease-out;-webkit-transition:top 0.3s,visibility 0.3s,background-color .3s}
 .tile a,.tile a *{text-decoration:none!important}
 .tile:active h3,.tile a:focus h3,.tile:hover h3{color:#FFF}
@@ -56,29 +56,17 @@ body.psgal .button{border-radius:5px}
 .storefront-secondary-navigation .site-header .site-branding{width:21.7391304348%}
 .storefront-secondary-navigation .site-header .secondary-navigation{width:47.8260869565%;float:left;margin-right:4.347826087%}
 .site-header .site-search{display:block;width:21.7391304348%;float:right;margin-right:0;clear:none;font-size:.875em}
-}@media (max-width: 768px){
-.footer-menu ul {
-list-style: none;
-margin:0;
-font-size: .875em;
 }
-.footer-menu ul li {
-display:inline-block;
+@media (max-width: 768px) {
+.footer-menu ul{list-style:none;margin:0;font-size:.875em}
+.footer-menu ul li{display:inline-block}
 }
-}#site-navigation .handheld-navigation ul.menu>li.lang-item>a{
-display:flex;
-}
-.handheld-navigation .lang-item img {
-width: 44px;
-margin-right: 5px;
-}
-body.single-ai1ec_event .handheld-navigation .menu .events,
-body.business-directory .handheld-navigation .menu .menu-item.directory, 
-body.topic .handheld-navigation .menu .menu-item-object-forum,
-body.bbp-user-page .handheld-navigation .menu .menu-item.account,
-body.forum .handheld-navigation .menu .menu-item-object-forum,
-.handheld-navigation .menu li.current-lang, .handheld-navigation .menu li.current-menu-item, 
-.handheld-navigation .menu li.current_page_parent, .handheld-navigation .menu li.current-post-ancestor{
-border-style: solid;
-border-width: 1px;
+#site-navigation .handheld-navigation ul.menu>li.lang-item>a{display:flex}
+.handheld-navigation .lang-item img{width:44px;margin-right:5px;height:25px}
+body.single-ai1ec_event .handheld-navigation .menu .events,body.business-directory .handheld-navigation .menu .menu-item.directory,body.topic .handheld-navigation .menu .menu-item-object-forum,body.bbp-user-page .handheld-navigation .menu .menu-item.account,body.forum .handheld-navigation .menu .menu-item-object-forum,.handheld-navigation .menu li.current-lang,.handheld-navigation .menu li.current-menu-item,.handheld-navigation .menu li.current_page_parent,.handheld-navigation .menu li.current-post-ancestor{border-style:solid;border-width:1px}
+.handheld-navigation .dropdown-toggle{border-style:solid;border-width:1px}
+@media (min-width: 768px) {
+body.single-post .col-full{max-width:90em}
+body.single-post .hentry.type-post .entry-content{width:100%}
+body.single-post .post-thumbnail img{max-width:768px}
 }

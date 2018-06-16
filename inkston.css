@@ -165,7 +165,8 @@ div.woocommerce widget_shopping_cart{
 .tile a:after {
  content: " (more..)";
 }
-.tile a h3{margin-bottom:12px;}
+.tile a h3{margin-bottom:12px; color:rgba(26, 25, 25, 0.1);
+}
 /* enable effect on touch, tab-stop and hover */
 .tile:active a, .tile a:focus, .tile:hover a {
 position:absolute;
@@ -301,6 +302,7 @@ font-size: .875em;
 .handheld-navigation .lang-item img {
     width: 44px;
     margin-right: 5px;
+    height: 25px;
 }
 
 /*indicate current menu for handheld navigation*/
@@ -313,4 +315,15 @@ body.forum .handheld-navigation .menu .menu-item-object-forum,
 .handheld-navigation .menu li.current_page_parent, .handheld-navigation .menu li.current-post-ancestor{
     border-style: solid;
     border-width: 1px;
+}
+
+/* handheld submenu indicator seems invisible by default */
+.handheld-navigation .dropdown-toggle {
+    border-style:solid;
+    border-width: 1px;
+}
+@media (min-width: 768px){
+body.single-post .col-full {max-width:90em;}
+body.single-post .hentry.type-post .entry-content { width: 100%;}
+body.single-post .post-thumbnail img{max-width:768px;}
 }
