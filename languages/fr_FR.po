@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Photoline Inkston\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-07 21:53+0000\n"
-"PO-Revision-Date: 2018-06-07 21:57+0000\n"
+"POT-Creation-Date: 2018-06-16 09:41+0000\n"
+"PO-Revision-Date: 2018-06-16 09:43+0000\n"
 "Last-Translator: moqiao <moqiao@inkston.com>\n"
 "Language-Team: French (France)\n"
 "Language: fr_FR\n"
@@ -37,6 +37,14 @@ msgstr ""
 #: inkston-menus.php:22 inkston-menus.php:23 inkston-menus.php:24
 msgid "Handheld Menu"
 msgstr ""
+
+#: functions.php:157 functions.php:159
+msgid "Recent Stories"
+msgstr "Histoires Récentes"
+
+#: functions.php:165
+msgid "Read more"
+msgstr "En savoir plus"
 
 #: woocommerce-auto-added-coupons/coupon-select-free-product.php:134
 msgid "None"

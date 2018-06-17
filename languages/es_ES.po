@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: inkston\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2018-06-07 21:53+0000\n"
-"PO-Revision-Date: 2018-06-07 21:55+0000\n"
+"POT-Creation-Date: 2018-06-16 09:41+0000\n"
+"PO-Revision-Date: 2018-06-16 09:42+0000\n"
 "Last-Translator: moqiao <moqiao@inkston.com>\n"
 "Language-Team: Spanish (Spain)\n"
 "Language: es_ES\n"
@@ -45,6 +45,14 @@ msgstr ""
 #: inkston-menus.php:22 inkston-menus.php:23 inkston-menus.php:24
 msgid "Handheld Menu"
 msgstr ""
+
+#: functions.php:157 functions.php:159
+msgid "Recent Stories"
+msgstr "Historias Recientes"
+
+#: functions.php:165
+msgid "Read more"
+msgstr "Leer mas"
 
 #: woocommerce-auto-added-coupons/coupon-select-free-product.php:134
 msgid "None"

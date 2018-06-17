@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) )
 function inkston_setup() {
 
 	/* Make theme available for translation */
-	load_theme_textdomain( 'storefront-inkston', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'storefront-inkston', get_stylesheet_directory() . '/languages' );
 
 	/* Enable support for Excerpt on Pages. See http://codex.wordpress.org/Excerpt */
 	add_post_type_support( 'page', 'excerpt' );

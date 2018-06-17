@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-07 21:53+0000\n"
+"POT-Creation-Date: 2018-06-16 09:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -37,6 +37,14 @@ msgstr ""
 
 #: inkston-menus.php:22 inkston-menus.php:23 inkston-menus.php:24
 msgid "Handheld Menu"
+msgstr ""
+
+#: functions.php:157 functions.php:159
+msgid "Recent Stories"
+msgstr ""
+
+#: functions.php:165
+msgid "Read more"
 msgstr ""
 
 #: woocommerce-auto-added-coupons/coupon-select-free-product.php:134
