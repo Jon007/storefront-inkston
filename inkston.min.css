@@ -69,4 +69,8 @@ body.single-ai1ec_event .handheld-navigation .menu .events,body.business-directo
 body.single-post .col-full{max-width:90em}
 body.single-post .hentry.type-post .entry-content{width:100%}
 body.single-post .post-thumbnail img{max-width:768px}
+#order_review, #order_review_heading, #customer_details{
+width:90%;
+float:none;
+}
 }

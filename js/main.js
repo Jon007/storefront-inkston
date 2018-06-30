@@ -107,4 +107,12 @@ jQuery(document).ready(function($) {
 		$('.wishlist_products_counter').toggleClass('wishlist-counter-with-products', '0' != $('.wishlist_products_counter_number').html() );
 	}			
    
+  /* when on checkout, make links inside terms and conditions open in new window */
+  $( document.body ).on( 'click', 'a.woocommerce-terms-and-conditions-link', function() {
+    jQuery('div.woocommerce-terms-and-conditions a').attr('target','_blank');
 });
+
+  //$( document.body ).bind( 'update_checkout', this.update_checkout );
+  
+});
+

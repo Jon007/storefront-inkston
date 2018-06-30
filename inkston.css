@@ -323,7 +323,13 @@ body.forum .handheld-navigation .menu .menu-item-object-forum,
     border-width: 1px;
 }
 @media (min-width: 768px){
+/* allow post content to stretch without zooming header image*/
 body.single-post .col-full {max-width:90em;}
 body.single-post .hentry.type-post .entry-content { width: 100%;}
 body.single-post .post-thumbnail img{max-width:768px;}
+/* checkout inline terms and conditions is not readable in storefront half width*/
+#order_review, #order_review_heading, #customer_details{
+width: 90%;
+float:none;
+}
 }
