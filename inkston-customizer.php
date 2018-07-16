@@ -81,6 +81,32 @@ function ink_customize_register( $wp_customize ) {
 		'priority'			 => 60,
 		'sanitize_callback'	 => 'sanitize_hex_color',
 	) ) );
+
+
+	/* -----------------------------------------------------------
+	 * Copyright section
+	 * ----------------------------------------------------------- */
+	$wp_customize->add_section(
+	'inkston_custom_copyright', array(
+		'title'		 => __( 'Footer Copyright', 'storefront-inkston' ),
+		'priority'	 => 600
+	)
+	);
+	$wp_customize->add_setting(
+	'copyright_txt', array(
+		'default'			 => 'All rights reserved',
+		'sanitize_callback'	 => 'sanitize_text_field',
+		'transport'			 => 'postMessage'
+	)
+	);
+	// Copyright CONTROL
+	$wp_customize->add_control(
+	'copyright_txt', array(
+		'section'	 => 'inkston_custom_copyright',
+		'label'		 => __( 'Copyright', 'storefront-inkston' ),
+		'type'		 => 'text'
+	)
+	);
 }
 
 add_action( 'customize_register', 'ink_customize_register', 90, 1 );
