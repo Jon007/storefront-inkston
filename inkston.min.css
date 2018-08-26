@@ -10,7 +10,7 @@ body.single-ai1ec_event .menu .events,body.business-directory .menu .menu-item.d
 .site-info .secondary-navigation,.site-info .col,.footer-subscribe,.wishlist_products_counter,.wishlist_products_counter a{display:inline-block!important;vertical-align:middle!important}
 .site-footer{padding-bottom:0}
 .col.social{float:right}
-.psgal figure.woocommerce-product-gallery__wrapper,.psgal figure.woocommerce-product-gallery__wrapper .flex-active-slide img{height:416px;width:416px}
+.psgal figure.woocommerce-product-gallery__wrapper, .psgal figure.woocommerce-product-gallery__wrapper img, .psgal figure.woocommerce-product-gallery__wrapper .flex-active-slide img{width:auto}
 a:hover,a:active{outline:thin dotted}
 .site-header-cart .cart-contents::after{float:left!important}
 .cart-contents .count{position:relative;top:-11px;left:-13px;font-weight:700!important;opacity:1!important}
@@ -73,4 +73,20 @@ body.single-post .post-thumbnail img{max-width:768px}
 width:90%;
 float:none;
 }
+}
+summary {
+font-weight: bold;
+font-size: larger;
+cursor: pointer;
+}
+details details summary {
+text-decoration: underline;
+font-weight: normal;
+font-size: inherit;
+}
+details details{
+margin-left:20px;
+}
+details p{
+margin-left:inherit;
 }

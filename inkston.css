@@ -46,8 +46,9 @@ body.forum .menu .menu-item-object-forum,
 
 /* clear .psgal sizing from figures which are woocommerce main product image */
 .psgal figure.woocommerce-product-gallery__wrapper,
+.psgal figure.woocommerce-product-gallery__wrapper img,
 .psgal figure.woocommerce-product-gallery__wrapper .flex-active-slide img{
-    height:416px; width:416px;
+    width:auto;
 }
 
 /* better text decoration on hover*/
@@ -332,4 +333,21 @@ body.single-post .post-thumbnail img{max-width:768px;}
 width: 90%;
 float:none;
 }
+}
+/* improve clarity of summary-detail sections */
+summary {
+    font-weight: bold;
+    font-size: larger;
+    cursor: pointer;
+}
+details details summary {
+    text-decoration: underline;
+    font-weight: normal;
+    font-size: inherit;
+}
+details details{
+    margin-left:20px;
+}
+details p{
+    margin-left:inherit;
 }
