@@ -90,3 +90,9 @@ margin-left:20px;
 details p{
 margin-left:inherit;
 }
+table.woocommerce-checkout-review-order-table .product-name{
+width: 65%;
+}
+table.woocommerce-checkout-review-order-table .product-total{
+width: 35%;
+}

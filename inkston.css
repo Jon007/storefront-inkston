@@ -350,4 +350,10 @@ details details{
 }
 details p{
     margin-left:inherit;
+}/* adjust column sizing on checkout order review */
+table.woocommerce-checkout-review-order-table .product-name{
+    width: 65%;
+}
+table.woocommerce-checkout-review-order-table .product-total{
+    width: 35%;
 }
