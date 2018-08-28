@@ -100,7 +100,7 @@
 				if ( has_nav_menu( $footermenu ) ) {
 					?>
 					<?php
-					echo '<span id="footer-copyright" class="secondary-navigation">&copy; ' . date( 'Y' ) . '</span> ';
+					echo '<span id="footer-copyright" class="secondary-navigation"><span class="menu">&copy; ' . date( 'Y' ) . '</span></span> ';
 					wp_nav_menu(
 					array(
 						'theme_location'	 => $footermenu,
@@ -134,10 +134,12 @@
 					<a class="button saleflash inverse" href="<?php echo($url_manage_subscription); ?>"><i class="fa fa-newspaper-o" aria-hidden="true"></i> subscribe</a></div>
 			</div>
 			<div class="col social">
-				<span class="wishlist_products_counter" title="<?php _e( 'View saved wishlist items', 'storefront-inkston' )
+				<?php if ( class_exists( 'TInvWL_Activator' ) ) {
+					?><span class="wishlist_products_counter" title="<?php _e( 'View saved wishlist items', 'storefront-inkston' )
 				?>"><a href="<?php echo($url_wishlist);
 				?>"><i class="fa fa-heart-o"></i><span class="wishlist_products_counter_number"></span></a></span>
 					 <?php
+					 }
 					 if ( has_nav_menu( 'social' ) ) {
 						 wp_nav_menu( array(
 							 'theme_location'	 => 'social',

@@ -60,6 +60,21 @@ a.saleflash.inverse:hover, a.saleflash.inverse:active{background-color:' . store
 .handheld-navigation .dropdown-toggle { color: ' . $storefront_theme_mods[ 'text_color' ] . ';border-color: ' . $storefront_theme_mods[ 'text_color' ] . ';}
 	';
 
+	/* allow secondary menu within footer to follow customizer footer colour scheme */
+	$override_styles .= '.site-footer .secondary-navigation ul ul,
+.site-footer .secondary-navigation ul.menu ul{
+background-color:' . $storefront_theme_mods[ 'footer_background_color' ] . '
+}
+.site-footer .secondary-navigation a {
+color:' . $storefront_theme_mods[ 'footer_link_color' ] . '
+}
+@media screen and ( min-width: 768px ) {
+.site-footer .secondary-navigation ul.menu a{
+color: ' . $storefront_theme_mods[ 'footer_link_color' ] . ';
+}
+.site-footer .secondary-navigation ul.menu a:hover {
+color: ' . storefront_adjust_color_brightness( $storefront_theme_mods[ 'footer_link_color' ], inkston_darken_factor() ) . ';
+}}';
 	return str_replace( '	', '', str_replace( '  ', ' ', $styles . $override_styles ) );
 }
 

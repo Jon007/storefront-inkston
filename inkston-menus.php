@@ -10,8 +10,8 @@ function inkston_setup_menus() {
 		'social' => __( 'Social Menu', 'storefront-inkston' ),
 		'footer' => __( 'Footer Menu', 'storefront-inkston' ),
 	) );
-	/* this code handles non-Polylang subsite allowing different language menus */
-	if ( ! function_exists( 'pll_the_languages' ) ) {
+	/* this code handles non-Polylang subsite using JSM_User_Locale to have different language menus */
+	if ( ! function_exists( 'pll_the_languages' ) && class_exists( 'JSM_User_Locale' ) ) {
 		register_nav_menus( array(
 			'primaryfr_FR'	 => __( 'Primary Menu', 'storefront-inkston' ) . ' Français',
 			'primaryes_ES'	 => __( 'Primary Menu', 'storefront-inkston' ) . ' Español',
@@ -32,7 +32,7 @@ function inkston_setup_menus() {
 add_action( 'after_setup_theme', 'inkston_setup_menus' );
 function storefront_secondary_navigation() {
 	$theme_location = 'secondary';
-	if ( ! function_exists( 'pll_the_languages' ) ) {
+	if ( ! function_exists( 'pll_the_languages' ) && class_exists( 'JSM_User_Locale' ) ) {
 		$locale = get_locale();
 		switch ( $locale ) {
 			case 'fr_FR':
@@ -79,7 +79,7 @@ function storefront_primary_navigation() {
 	$primary_location	 = 'primary';
 	$handheld_location	 = 'handheld';
 
-	if ( ! function_exists( 'pll_the_languages' ) ) {
+	if ( ! function_exists( 'pll_the_languages' ) && class_exists( 'JSM_User_Locale' ) ) {
 		$locale = get_locale();
 		switch ( $locale ) {
 			case 'fr_FR':
