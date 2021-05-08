@@ -93,7 +93,7 @@ add_filter( 'storefront_homepage_content_styles', 'remove_header_background_imag
 /* storefront large header images not compatible with inkston square featured images */
 function storefront_page_header() {
 	?>
-	<header class="entry-header">
+	<header class="entry-header"><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<?php
 		//storefront_post_thumbnail( 'full' );
 		the_title( '<h1 class="entry-title">', '</h1>' );
@@ -197,3 +197,92 @@ function output_recent_post_tiles() {
 
 include_once( 'inkston-customizer.php' );
 include_once( 'inkston-menus.php' );
+
+
+/*
+ * dequeue all unnecessary scripts
+ */
+function inkston_dequeue_script() {
+    if ( class_exists( 'woocommerce' ) ) {
+        /* avoid refreshing cart fragments on pages which are not cached anyway...
+          especially cart/checkout pages are already over-heavy due to not being cached and extra stripe scripts etc */
+        if ( is_cart() || is_checkout() || isset( $_GET[ 'pay_for_order' ] ) || is_add_payment_method_page() || is_account_page() ) {
+            wp_dequeue_script( 'wc-cart-fragments' );
+        }
+        //could restrict social login to My Account and Checkout but stripping out single pages removes payload from most urls
+        if ( ! is_page() || ( is_shop()) ) {
+            wp_dequeue_script( 'the_champ_sl_common' ); //super-socializer
+            wp_dequeue_script( 'the_champ_ss_general_scripts' );//super-socializer
+            wp_dequeue_script( 'front-js' );  //advanced shipment tracking                                       
+        }
+        if (! is_product() ){
+            wp_dequeue_script( 'woosb-frontend' );  //product bundles 
+            wp_dequeue_script( 'tinvwl' );  //wishlist
+        }
+        if ( ! is_single() || is_product() ){
+            wp_dequeue_script( 'spu-public' );  //popups - only allow on article pages     
+        }
+    }
+//    wp_dequeue_script( 'wpla_product_matcher');
+}
+
+add_action( 'wp_print_scripts', 'inkston_dequeue_script', 1000 );
+
+/*
+ * dequeue all unnecessary csss
+ */
+function inkston_dequeue_styles() {
+        //$wp_styles = wp_styles();
+	wp_dequeue_style( 'photoswipe-default-skin' );
+	wp_dequeue_style( 'photoswipe' );        
+	//wp_dequeue_style( 'pswp-skin' );
+	//wp_dequeue_style( 'photoswipe-core-css' );
+        
+	wp_dequeue_style( 'storefront-child-style' ); //default style.css which only has text theme info
+        
+	wp_dequeue_style( 'decent-comments-widget' );
+	//wp_dequeue_style( 'dashicons' );  //hamburger menus
+	wp_dequeue_style( 'front_style' );  //woo advanced shipment tracking
+	//wp_dequeue_style( 'tinvwl' );  //wishlist
+	//wp_dequeue_style( 'storefront-fonts' );  //google font used by storefront
+
+	wp_dequeue_style( 'badgeos-front' ); //badgeos pages
+        wp_deregister_style( 'badgeos-front' );
+
+	if ( class_exists( 'woocommerce' ) ) {
+            if ( ! is_product() ) {
+                wp_dequeue_style( 'woosb' );
+                wp_dequeue_style( 'woosb-frontend' );  //smart bundle                                            
+                wp_dequeue_style( 'tinvwl' );  //wishlist, add to wishlist functions
+            }
+            //could restrict social login to My Account and Checkout but stripping out single pages removes payload from most urls
+            if ( ! is_page() || ( is_shop()) ) {
+                wp_dequeue_style( 'the_champ_frontend_css' );
+            }
+        }        
+        if ( class_exists( 'Classic_Editor' ) ) {
+            //if ( is_multisite() ) {
+                //$opt = get_network_option( null, 'classic-editor-allow-sites' );
+                //if ( $opt !== 'allow' ) {
+                    inkston_dequeue_woo_block_editors();
+                //}
+            //}
+        }
+}
+function inkston_dequeue_woo_block_editors(){
+    //$wp_styles = wp_styles();
+
+    wp_dequeue_style('wp-block-library' );
+    wp_dequeue_style('wp-block-library-theme' );
+    wp_dequeue_style('wc-block-style' );
+    wp_dequeue_style('wp-components' );
+    wp_dequeue_style('wp-editor-font' );
+    wp_dequeue_style('wp-block-editor' );
+    wp_dequeue_style('wp-nux' );
+    wp_dequeue_style('wp-editor-css' );
+    wp_dequeue_style('block-robo-gallery-style-css' );
+    wp_dequeue_style('storefront-gutenberg-blocks' );    
+    wp_dequeue_style('storefront-gutenberg-blocks-inline' );    
+}
+
+add_action( 'wp_print_styles', 'inkston_dequeue_styles', 1000 );

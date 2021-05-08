@@ -36,9 +36,10 @@ if ($is_current_user){
         _e( "Update account name/email address/password", 'storefront-inkston' ); ?>"><?php 
         _e( "Account details", 'woocommerce' ); ?></a></span></li>  
     <li><span class="bbp-user-edit-link"><a href="<?php 
-        _e( '/my-account/customer-logout/', 'storefront-inkston');?>" title="<?php 
-        _e( "Log out from inkston.com", 'storefront-inkston' ); ?>"><?php 
-        _e( "Logout", 'woocommerce' ); ?></a></span></li>  
+    //echo(wp_logout_url());
+    //logout via woocommerce didn't work due to nonce issues
+    echo(wp_nonce_url(__( '/my-account/customer-logout/', 'storefront-inkston' ), 'customer-logout')); 
+    ?>" title="<?php _e( "Log out from inkston.com", 'storefront-inkston' ); ?>"><?php _e( "Logout", 'woocommerce' ); ?></a></span></li>
 <?php
 } ?><li class="<?php if ( bbp_is_single_user_profile() ) :?>current<?php endif; ?>"><span class="vcard bbp-user-profile-link">
         <a class="url fn n <?php 
